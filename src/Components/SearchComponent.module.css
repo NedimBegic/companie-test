@@ -1,0 +1,41 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  margin-top: 2em;
+  width: 95%;
+  padding-left: 1em;
+}
+
+.buttonGroup {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.button {
+  padding: 10px 20px;
+  background-color: white;
+  border: 1px solid #ccc;
+  cursor: pointer;
+  border-radius: 5px;
+  opacity: 0.8;
+  font-weight: bold;
+  transition: all 300ms ease-in;
+}
+
+.button:hover {
+  opacity: 1;
+  border: 1px solid #ffc107;
+  cursor: pointer;
+}
+
+.button.active {
+  background-color: #ffc107;
+}
+
+.searchBar {
+  width: 90%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  margin-top: 10px;
+  border-radius: 5px;
+}

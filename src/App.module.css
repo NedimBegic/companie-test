@@ -1,0 +1,7 @@
+.all {
+  width: 100%;
+  max-width: 80em;
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+}
