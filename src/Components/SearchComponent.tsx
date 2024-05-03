@@ -6,6 +6,7 @@ import TvShowsButton from "../SideComponents/TvShowsButton";
 import styles from "./SearchComponent.module.css";
 
 const SearchComponent: React.FC = () => {
+  // context to check which button is active
   const { activeButton } = useAppContext();
 
   return (

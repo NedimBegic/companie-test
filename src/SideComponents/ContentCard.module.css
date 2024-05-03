@@ -1,0 +1,58 @@
+.card {
+  position: relative;
+  width: 32em;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+}
+
+.image {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 10px 10px 0 0;
+}
+
+.title {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  color: white;
+  text-align: center;
+  padding: 10px;
+  font-size: 1.5rem;
+  border-radius: 0 0 10px 10px;
+  transition: opacity 0.3s ease;
+}
+
+.card:hover .title {
+  opacity: 1;
+  cursor: pointer;
+}
+
+@media (max-width: 400px) {
+  .card {
+    width: 100%;
+  }
+}
+
+@media (min-width: 400px) and (max-width: 600px) {
+  .card {
+    width: 100%;
+  }
+}
+
+@media (min-width: 400px) and (max-width: 900px) {
+  .card {
+    width: 100%;
+  }
+}

@@ -10,7 +10,9 @@ export interface AppContextData {
   activeButton: string;
   setActiveButton: Dispatch<SetStateAction<string>>;
   searchBar: string;
+  data: Movie[];
   detailedPageId: number;
+  findBySearchHandler: () => Promise<void>;
   setDetailedPageId: Dispatch<SetStateAction<number>>;
   searchMoviesHandler: () => Promise<void>;
   searchTvShowsHandler: () => Promise<void>;
@@ -29,7 +31,8 @@ export interface Movie {
   popularity: number;
   poster_path: string | null;
   release_date: string;
-  title: string;
+  title?: string;
+  name?: string;
   video: boolean;
   vote_average: number;
   vote_count: number;
