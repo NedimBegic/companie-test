@@ -4,13 +4,18 @@ import ContentList from "../Components/ContentList";
 import { useAppContext } from "../store/appContext";
 
 const HomePage: React.FC = () => {
-  const { searchTvShowsHandler } = useAppContext();
+  const { searchTvShowsHandler, data } = useAppContext();
 
-  // when rendered TV Shows must open
+  // Initial render of the data
   useEffect(() => {
-    // render Tv Shows
-    searchTvShowsHandler();
-  }, []);
+    // check if a search already trigered
+    if (data.length > 0) {
+      return;
+    } else {
+      // when the page opens for the first time
+      searchTvShowsHandler();
+    }
+  }, [data, searchTvShowsHandler]);
 
   return (
     <div>

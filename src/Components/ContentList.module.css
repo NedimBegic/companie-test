@@ -18,6 +18,12 @@
   gap: 2em;
 }
 
+.loading {
+  text-align: center;
+  font-size: large;
+  margin-top: 1em;
+}
+
 @media (max-width: 400px) {
   .list {
     width: 90%;

@@ -14,6 +14,7 @@ const AppContext = createContext<AppContextData>({
   searchMoviesHandler: async () => {},
   searchTvShowsHandler: async () => {},
   searchBarHandler: () => {},
+  loading: false,
 });
 
 /* PROVIDER */
@@ -24,9 +25,11 @@ export const AppProvider: React.FC<{ children: ReactNode }> = ({
   const [detailedPageId, setDetailedPageId] = useState<number>(0);
   const [activeButton, setActiveButton] = useState<string>("tvShows");
   const [data, setData] = useState<Movie[] | []>([]);
+  const [loading, setLoading] = useState<boolean>(false);
 
   //++++++++++++ For searching with Movies button
   const searchMoviesHandler = async () => {
+    setLoading(true);
     try {
       const response = await axios.get(
         `${process.env.REACT_APP_URL}/discover/movie?include_adult=false&include_video=false&language=en-US&page=1&sort_by=vote_count.desc`,
@@ -36,11 +39,14 @@ export const AppProvider: React.FC<{ children: ReactNode }> = ({
       setData(dataArray);
     } catch (error) {
       console.error("Error fetching movies:", error);
+    } finally {
+      setLoading(false);
     }
   };
 
   //++++++++++++++ For searching with TvShows button
   const searchTvShowsHandler = async () => {
+    setLoading(true);
     try {
       const response = await axios.get(
         `${process.env.REACT_APP_URL}/discover/tv?include_adult=false&language=en-US&page=1&sort_by=vote_count.desc`,
@@ -50,6 +56,8 @@ export const AppProvider: React.FC<{ children: ReactNode }> = ({
       setData(dataArray);
     } catch (error) {
       console.error("Error fetching TV shows:", error);
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -58,8 +66,9 @@ export const AppProvider: React.FC<{ children: ReactNode }> = ({
     setSearchBar(value);
   };
 
-  //+++++++++++++++ Triger a fetch with typed letters
+  //+++++++++++++++ Trigger a fetch with typed letters
   const findBySearchHandler = async () => {
+    setLoading(true);
     try {
       let url = `${process.env.REACT_APP_URL}/search/${
         activeButton === "movies" ? "movie" : "tv"
@@ -69,6 +78,8 @@ export const AppProvider: React.FC<{ children: ReactNode }> = ({
       setData(dataArray);
     } catch (error) {
       console.error("Error fetching data:", error);
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -83,6 +94,7 @@ export const AppProvider: React.FC<{ children: ReactNode }> = ({
     searchMoviesHandler,
     searchTvShowsHandler,
     searchBarHandler,
+    loading, // Add loading state to the context
   };
 
   return (

@@ -1,4 +1,4 @@
-import React, { Dispatch, SetStateAction } from "react";
+import { Dispatch, SetStateAction } from "react";
 
 // Props of button components
 export interface ButtonProps {
@@ -17,6 +17,7 @@ export interface AppContextData {
   searchMoviesHandler: () => Promise<void>;
   searchTvShowsHandler: () => Promise<void>;
   searchBarHandler: (value: string) => void;
+  loading: boolean;
 }
 
 // For movies data from API
@@ -27,13 +28,14 @@ export interface Movie {
   id: number;
   original_language: string;
   original_title: string;
+  original_name: string;
   overview: string;
   popularity: number;
   poster_path: string | null;
   release_date: string;
   title?: string;
   name?: string;
-  video: boolean;
+  video?: boolean;
   vote_average: number;
   vote_count: number;
 }
