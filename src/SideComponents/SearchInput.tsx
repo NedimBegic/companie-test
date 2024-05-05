@@ -2,14 +2,7 @@ import React, { useState } from "react";
 import { useAppContext } from "../store/appContext";
 
 const SearchInput: React.FC<{ style: string }> = ({ style }) => {
-  const {
-    searchBarHandler,
-    searchBar,
-    findBySearchHandler,
-    activeButton,
-    searchMoviesHandler,
-    searchTvShowsHandler,
-  } = useAppContext();
+  const { searchBarHandler, searchBar, findBySearchHandler } = useAppContext();
   const [timer, setTimer] = useState<NodeJS.Timeout | null>(null);
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -24,12 +17,6 @@ const SearchInput: React.FC<{ style: string }> = ({ style }) => {
     const newTimer = setTimeout(() => {
       if (value.length >= 3) {
         findBySearchHandler();
-      } else {
-        if (activeButton === "movies") {
-          searchMoviesHandler();
-        } else if (activeButton === "tvShows") {
-          searchTvShowsHandler();
-        }
       }
     }, 1000);
 

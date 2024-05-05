@@ -21,13 +21,14 @@ const DetailedPage: React.FC = () => {
         setData(result);
 
         // try to fetch trailer
-        if (result?.id) {
+        if (result?.id && type === "movie") {
           const videoResponse = await axios.get(
             `${process.env.REACT_APP_URL}/movie/${result.id}/videos?language=en-US`,
             options
           );
           const videos = videoResponse.data.results;
           if (videos && videos.length > 0) {
+            // it has more trailers
             setVideoId(videos[0].key);
           }
         }
@@ -57,7 +58,11 @@ const DetailedPage: React.FC = () => {
             ></iframe>
           ) : (
             <img
-              src={`https://image.tmdb.org/t/p/w500/${data.backdrop_path}`}
+              src={
+                data.backdrop_path
+                  ? `https://image.tmdb.org/t/p/w500/${data.backdrop_path}`
+                  : "/noMedia.webp"
+              }
               alt={data.title}
               className={styles.image}
             />

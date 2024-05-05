@@ -1,4 +1,10 @@
-import React, { createContext, useContext, useState, ReactNode } from "react";
+import React, {
+  createContext,
+  useContext,
+  useState,
+  ReactNode,
+  useEffect,
+} from "react";
 import axios from "axios";
 import { options } from "../Utils/options";
 import { AppContextData, Movie } from "../Utils/types";
@@ -26,6 +32,16 @@ export const AppProvider: React.FC<{ children: ReactNode }> = ({
   const [activeButton, setActiveButton] = useState<string>("tvShows");
   const [data, setData] = useState<Movie[] | []>([]);
   const [loading, setLoading] = useState<boolean>(false);
+
+  useEffect(() => {
+    if (searchBar.length >= 3) {
+      findBySearchHandler();
+    } else {
+      activeButton === "tvShows"
+        ? searchTvShowsHandler()
+        : searchMoviesHandler();
+    }
+  }, [searchBar, activeButton]);
 
   //++++++++++++ For searching with Movies button
   const searchMoviesHandler = async () => {
