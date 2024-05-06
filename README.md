@@ -16,7 +16,7 @@
   </ul>
 
   <h2>Overview</h2>
-  <p>This project is a solution to a coding test provided by [Company Name]. It is a React application that allows users to browse top movies and TV shows, search for specific content, and view detailed information about individual movies or TV shows.</p>
+  <p>This project is a solution to a coding test provided by a companie. It is a React application that allows users to browse top movies and TV shows, search for specific content, and view detailed information about individual movies or TV shows.</p>
 
   <h2>Features</h2>
   <ul>
